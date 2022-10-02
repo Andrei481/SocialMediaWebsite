@@ -1,0 +1,25 @@
+body{
+    background-color: rebeccapurple;
+    color: lightblue;
+}
+
+a:link{
+    color: lightpink;
+}
+
+a:visited{
+    color: lightgreen;
+}
+
+a:active{
+    color: crimson;
+}
+
+a:hover{
+    color: greenyellow;
+}
+
+.resize{
+    width: 150px;
+    height: auto;
+}
