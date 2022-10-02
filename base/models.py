@@ -1,4 +1,5 @@
 from enum import auto
+from heapq import nlargest
 from operator import mod
 from pyexpat import model
 from statistics import mode
@@ -20,7 +21,7 @@ class Room(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True) 
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
-    #participants = # the users currently active in the room
+    participants = models.ManyToManyField(User, related_name='participants', blank=True) # the users currently active in the room
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     
