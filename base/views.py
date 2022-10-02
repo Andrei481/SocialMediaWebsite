@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -15,6 +16,15 @@ from .forms import RoomForm
 #     {'id':2, "name": "Politics"},
 #     {'id':3, "name": "Tech"},
 # ]
+
+def userProfile(request, pk):
+    user = User.objects.get(id=pk)
+    rooms = user.room_set.all()
+    room_messages = user.message_set.all()
+    topics = Topic.objects.all()
+    
+    context = {'user': user, 'rooms': rooms, 'room_messages': room_messages, 'topics': topics}
+    return render(request, 'base/profile.html', context)
 
 def loginPage(request):
     page = 'login'

@@ -28,6 +28,7 @@
                     {% endif %}
                     <small>@{{message.user}} {{message.created|timesince}} ago</small>
                     <p>{{message.body}}</p>
+                    <hr>
                 </div>
             {% endfor %}
         </div>
@@ -37,7 +38,7 @@
         <div class="comment-form">
             <form method="POST" action="">
                 {% csrf_token %}
-                <input type="text" name="body" placeholder="Write your message here...">
+                <input id="message-box" type="text" name="body" placeholder="Write your message here..."> <style> #message-box{ width: 250px; } </style>
             </form>
         </div>
         
