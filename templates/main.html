@@ -10,11 +10,7 @@
     
     {% include 'navbar.html' %}
 
-    {% if user.is_authenticated %}
-    Hi {{ user.username }}!
-    {% else %}
-    <p>You are not logged in</p>
-    {% endif %}
+    
 
     {% if messages %}
     <ul class="messages">
