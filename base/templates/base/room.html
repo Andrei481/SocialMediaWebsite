@@ -14,6 +14,9 @@
     <div>
 
         <h1>{{room.name}}</h1>
+        {% if request.user.is_superuser %}
+            <a href="{% url 'update-room' room.id %}">Edit Room</a>
+        {% endif %}
 
         <p>{{ room.description }}</p>
 

@@ -115,10 +115,26 @@ def createTopic(request):
         form = TopicForm(request.POST)
         if form.is_valid():
             topic = form.save(commit=False)
-            #topic.host = request.user
             topic.save()
             return redirect('home')
         
+    context = {'form': form}
+    return render(request, 'base/topic_form.html', context)
+
+@login_required(login_url='login')
+def updateTopic(request):
+    topic = Topic.objects.get()
+    form = TopicForm()
+    
+    # if request.user != room.host and not request.user.is_superuser:
+    #     return HttpResponse("You cannot modify another user's room!")
+    
+    if request.method == 'POST':
+        form = TopicForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    
     context = {'form': form}
     return render(request, 'base/topic_form.html', context)
 
