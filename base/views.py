@@ -8,7 +8,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from .models import Message, Room, Topic
-from .forms import RoomForm
+from .forms import RoomForm, TopicForm
 
 
 # rooms = [
@@ -106,6 +106,22 @@ def room(request, pk):
     
     context = {'room': room, 'room_messages': room_messages, 'participants': participants}
     return render(request, 'base/room.html', context)
+
+@login_required(login_url='/login')
+def createTopic(request):
+    form = TopicForm()
+    
+    if request.method == 'POST':
+        form = TopicForm(request.POST)
+        if form.is_valid():
+            topic = form.save(commit=False)
+            #topic.host = request.user
+            topic.save()
+            return redirect('home')
+        
+    context = {'form': form}
+    return render(request, 'base/topic_form.html', context)
+
 
 @login_required(login_url='/login')
 def createRoom(request):

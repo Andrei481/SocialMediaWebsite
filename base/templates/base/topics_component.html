@@ -10,3 +10,7 @@
                 <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a>
             </div>
         {% endfor %}
+
+        {% if request.user.is_superuser %}
+            <a href="{% url 'create-topic' %}">Create topic</a>
+        {% endif %}
