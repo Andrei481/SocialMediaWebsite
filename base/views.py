@@ -32,7 +32,7 @@ def loginPage(request):
         return HttpResponse('You are already logged in!')
     
     if request.method == 'POST':
-        username = request.POST.get('username').lower()
+        username = request.POST.get('username')
         password = request.POST.get('password')
         
         try:
@@ -63,7 +63,7 @@ def registerPage(request):
         
         if form.is_valid():
             user = form.save(commit=False)
-            user.username = user.username.lower()
+            user.username = user.username
             user.save()
             login(request, user)
             return redirect('home')         
@@ -127,7 +127,7 @@ def updateRoom(request, pk):
     room = Room.objects.get(id=pk)
     form = RoomForm(instance=room)
     
-    if request.user != room.host:
+    if request.user != room.host and not request.user.is_superuser:
         return HttpResponse("You cannot modify another user's room!")
     
     if request.method == 'POST':
@@ -143,7 +143,7 @@ def updateRoom(request, pk):
 def deleteRoom(request, pk):
     room = Room.objects.get(id=pk)
     
-    if request.user != room.host:
+    if request.user != room.host and not request.user.is_superuser:
         return HttpResponse("You cannot delete another user's room!")
     
     if request.method == 'POST':
@@ -155,7 +155,7 @@ def deleteRoom(request, pk):
 def deleteMessage(request, pk):
     message = Message.objects.get(id=pk)
     
-    if request.user != message.user:
+    if request.user != message.user and not request.user.is_superuser:
         return HttpResponse("You cannot delete another user's message!")
     
     if request.method == 'POST':
