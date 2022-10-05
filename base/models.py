@@ -1,4 +1,4 @@
-from enum import auto
+from enum import auto, unique
 from heapq import nlargest
 from operator import mod
 from pyexpat import model
@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Topic(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
     
     def __str__(self):
         return self.name
