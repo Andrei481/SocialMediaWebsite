@@ -122,22 +122,33 @@ def createTopic(request):
     return render(request, 'base/topic_form.html', context)
 
 @login_required(login_url='login')
-def updateTopic(request):
-    topic = Topic.objects.get()
-    form = TopicForm()
+def updateTopic(request, pk):
+    topic = Topic.objects.filter(id=pk)
+    form = TopicForm(instance=topic)
     
-    # if request.user != room.host and not request.user.is_superuser:
-    #     return HttpResponse("You cannot modify another user's room!")
+    if not request.user.is_superuser:
+        return HttpResponse("Only the admin can change topics!")
     
     if request.method == 'POST':
-        form = TopicForm(request.POST)
-        if form.is_valid():
+        form = TopicForm(request.POST, instance=topic)
+        if form.is_valid:
             form.save()
             return redirect('home')
-    
+        
     context = {'form': form}
     return render(request, 'base/topic_form.html', context)
-
+    
+@login_required(login_url='login') 
+def deleteTopic(request, pk):
+    topic = Topic.objects.get(id=pk)
+    
+    if not request.user.is_superuser:
+        return HttpResponse("Only the admin can delete topics!")
+    
+    if request.method == 'POST':
+        topic.delete()
+        return redirect('home')    
+    return render(request, 'base/delete.html', {'obj':topic})
 
 @login_required(login_url='/login')
 def createRoom(request):
