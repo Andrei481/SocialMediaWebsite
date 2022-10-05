@@ -146,6 +146,7 @@ def deleteTopic(request, pk):
         return HttpResponse("Only the admin can delete topics!")
     
     if request.method == 'POST':
+        rooms = Room.objects.filter(topic=topic).delete()
         topic.delete()
         return redirect('home')    
     return render(request, 'base/delete.html', {'obj':topic})
