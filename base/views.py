@@ -123,7 +123,8 @@ def createTopic(request):
 
 @login_required(login_url='login')
 def updateTopic(request, pk):
-    topic = Topic.objects.filter(id=pk)
+    topic = Topic.objects.get(id=pk)
+    rooms = Room.objects.filter(topic=topic)
     form = TopicForm(instance=topic)
     
     if not request.user.is_superuser:
@@ -133,6 +134,7 @@ def updateTopic(request, pk):
         form = TopicForm(request.POST, instance=topic)
         if form.is_valid:
             form.save()
+            rooms.update(topic=topic)
             return redirect('home')
         
     context = {'form': form}
@@ -146,7 +148,7 @@ def deleteTopic(request, pk):
         return HttpResponse("Only the admin can delete topics!")
     
     if request.method == 'POST':
-        rooms = Room.objects.filter(topic=topic).delete()
+        Room.objects.filter(topic=topic).delete()
         topic.delete()
         return redirect('home')    
     return render(request, 'base/delete.html', {'obj':topic})
