@@ -1,0 +1,68 @@
+:root{
+    font-family: 'Roboto','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /*  font-size: 28px; */
+}
+
+body{
+    background-color: rgb(81, 53, 110);
+    color: khaki;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.feed-container {
+    
+}
+
+ul li {
+    display: inline-block;
+}
+
+h3{
+    color: lightcyan;
+}
+
+#topnav ul{
+    list-style-type: none;
+    margin: 0;
+    margin-left: auto;
+    background-color: rgba(6, 3, 21, 0.297);
+    padding: 1%;
+    display:inline-block;
+    width: 100%;
+}
+
+#logo{
+    width: 255px;
+    height: auto;
+}
+
+#searchbar{
+    width: 600px;
+    height: 30px;
+    position: absolute;
+    top: 35px;
+    left: 350px;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:link{
+    color: powderblue;
+}
+
+a:visited{
+    color: lightskyblue;
+}
+
+a:active{
+    color: rgb(239, 243, 176);
+}
+
+a:hover{
+    color: rgb(207, 247, 232);
+}
+

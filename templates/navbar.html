@@ -1,19 +1,32 @@
-<a href="/">
-    <h1>LOGO</h1>
-</a>
+{% load static %}
+<nav>
+    <div class="container-fluid">
+        <div class="row" id="topnav">
+            <ul>
+                <li>
+                    <a href="/"><img id="logo" src="{% static 'images\logo-no-background.png' %}" alt=""></a>
+                </li>
 
-<form method="GET" action="{% url 'home' %}">
-    <input type="text" name="q" placeholder="Search Rooms..." />
-</form>
+                <li>
+                    <form method="GET" action="{% url 'home' %}">
+                        <input id="searchbar" type="text" name="q" placeholder="Search Rooms..." />
+                    </form>
+                </li>
 
 
-
-{% if request.user.is_authenticated %}
-    Hi, {{ request.user.username }}!
-    <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-    <p>You are not logged in</p>
-    <a href="{% url 'login' %}">Login</a>
-    {% endif %}
-
-<hr>
+                {% if request.user.is_authenticated %}
+                <li style="float: right;">
+                    Hi, {{ request.user.username }}!
+                    <a  style="position: relative; top: 40px; right: 58px;" href="{% url 'logout' %}" style="float: right; padding-right: 20px;" >Logout</a>
+                </li>
+                {% else %}
+                <li style="float: right;">
+                    You are not logged in!
+                    <a style="position: relative; top: 35px; right: 156px;" href="{% url 'login' %}">Login</a>
+                </li>
+                {% endif %}
+                <hr>
+            </ul>
+        </div>
+    </div>
+</nav>
