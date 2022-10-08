@@ -4,6 +4,17 @@
 
 <h1>
     {{user.username}}
+    {% if request.user.is_superuser %}
+        {% if user.is_active %}
+        <button class="button-ban">
+            <a href="{% url 'ban-user' user.id %}">Ban User {{user.id}}</a>
+        </button>
+        {% else %}
+        <button class="button-ban">
+            <a href="{% url 'ban-user' user.id %}">Unban User</a>
+        </button>
+        {% endif %}
+    {% endif %}
 </h1>
 
 <style>

@@ -18,6 +18,8 @@ urlpatterns = [
     
     path('create-topic', views.createTopic, name="create-topic"),
     path('update-topic/<str:pk>/', views.updateTopic, name="update-topic"),
-    path('delete-topic/<str:pk>/', views.deleteTopic, name="delete-topic")
+    path('delete-topic/<str:pk>/', views.deleteTopic, name="delete-topic"),
+    
+    path('ban-user/<str:pk>/', views.banUser, name="ban-user")
 ]
 

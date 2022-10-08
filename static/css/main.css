@@ -11,9 +11,23 @@ body{
     height: 100vh;
 }
 
-.feed-container {
-    
+.button-create {
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 0.7em 1.4em 0.7em 1.1em;
 }
+
+button > a:link{
+    color: black;
+}
+
+button > a:visited{
+    color: black;
+}
+
 
 ul li {
     display: inline-block;

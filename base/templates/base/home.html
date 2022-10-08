@@ -17,8 +17,10 @@
 
     <div>
         <h3>{{room_count}} room(s) available</h3>
-        <a href="{% url 'create-room' %}">Create Room</a>
-
+        <hr>
+        <button class="button-create" role="button">
+            <a href="{% url 'create-room' %}">Create Room</a>
+        </button>
         {% include 'base/feed_component.html' %}
 
     </div>

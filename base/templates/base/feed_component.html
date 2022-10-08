@@ -2,17 +2,27 @@
             
     {% for room in rooms %}
         <div class="feed-container">
-            {% if request.user == room.host %}
-                <a href="{% url 'update-room' room.id %}">Edit</a>
-                <a href="{% url 'delete-room' room.id %}">Delete</a>
-            {% elif request.user.is_superuser %}
-                <a href="{% url 'update-room' room.id %}">Edit</a>
-                <a href="{% url 'delete-room' room.id %}">Delete</a>
-            {% endif %}
-            <span>
-                <small>Created by</small> <i><a href="{% url 'user-profile' room.host.id %}">{{room.host.username}}</a></i>
-            </span>
-            <h5>{{room.id}} - <a href="{% url 'room' room.id %}">{{room.name}}</a></h5>
+            <h5>
+                {{room.id}} - <a style="font-size: 16px;" href="{% url 'room' room.id %}">{{room.name}}</a>
+                <span>
+                    <small>Created by</small> <i><a href="{% url 'user-profile' room.host.id %}">{{room.host.username}}</a></i>
+                    {% if request.user == room.host %}
+                        <button class="button-update-room">
+                            <a href="{% url 'update-room' room.id %}">Edit</a>
+                        </button>
+                        <button class="button-delete-room">
+                            <a href="{% url 'delete-room' room.id %}">Delete</a>
+                        </button>
+                        {% elif request.user.is_superuser %}
+                        <button class="button-update-room">
+                            <a href="{% url 'update-room' room.id %}">Edit</a>
+                        </button>
+                        <button class="button-delete-room">
+                            <a href="{% url 'delete-room' room.id %}">Delete</a>
+                        </button>
+                    {% endif %}
+                </span>
+            </h5>
             <small><b>{{room.topic.name}}</b></small>
         </div>
     {% endfor %}

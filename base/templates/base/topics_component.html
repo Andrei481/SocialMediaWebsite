@@ -9,12 +9,18 @@
             <div>
                 <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a>
                 {% if request.user.is_superuser %}
-                    <a href="{% url 'update-topic' topic.id %}">Edit Topic</a>
-                    <a href="{% url 'delete-topic' topic.id %}">Delete Topic</a>
+                    <button>
+                        <a href="{% url 'update-topic' topic.id %}">Edit Topic</a>
+                    </button>
+                    <button>
+                        <a href="{% url 'delete-topic' topic.id %}">Delete Topic</a>
+                    </button>
                 {% endif %}
             </div>
         {% endfor %}
 
         {% if request.user.is_superuser %}
-            <a href="{% url 'create-topic' %}">Create topic</a>
+            <button>
+                <a href="{% url 'create-topic' %}">Create topic</a>
+            </button>
         {% endif %}

@@ -1,4 +1,3 @@
-from multiprocessing import context
 from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -16,6 +15,22 @@ from .forms import RoomForm, TopicForm
 #     {'id':2, "name": "Politics"},
 #     {'id':3, "name": "Tech"},
 # ]
+
+def banUser(request, pk):
+    if not request.user.is_superuser:
+        return  HttpResponse('Only the admin can ban users!')
+    
+    banned_user = User.objects.get(id=pk)
+    print(banned_user.username)
+    if banned_user.is_superuser:
+        return HttpResponse("Cannot ban the admin!")
+    # try:
+    #     banned_user.is_active = False
+    # except:
+    #     messages.error("Cannot ban " + banned_user.username)
+    
+    context = {'banned_user': banned_user}
+    return render(request, 'base/profile.html', context)
 
 def userProfile(request, pk):
     user = User.objects.get(id=pk)
