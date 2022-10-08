@@ -4,10 +4,10 @@
 
 <h1>
     {{user.username}}
-    {% if request.user.is_superuser %}
+    {% if request.user.is_superuser and not request.user == user %}
         {% if user.is_active %}
         <button class="button-ban">
-            <a href="{% url 'ban-user' user.id %}">Ban User {{user.id}}</a>
+            <a href="{% url 'ban-user' user.id %}">Ban User</a>
         </button>
         {% else %}
         <button class="button-ban">

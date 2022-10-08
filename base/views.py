@@ -10,27 +10,23 @@ from .models import Message, Room, Topic
 from .forms import RoomForm, TopicForm
 
 
-# rooms = [
-#     {'id':1, "name": "Sports"},
-#     {'id':2, "name": "Politics"},
-#     {'id':3, "name": "Tech"},
-# ]
-
 def banUser(request, pk):
     if not request.user.is_superuser:
         return  HttpResponse('Only the admin can ban users!')
     
     banned_user = User.objects.get(id=pk)
-    print(banned_user.username)
+    rooms = Room.objects.filter(host=banned_user)
+    comments = Message.objects.filter(user=banned_user)
     if banned_user.is_superuser:
         return HttpResponse("Cannot ban the admin!")
-    # try:
-    #     banned_user.is_active = False
-    # except:
-    #     messages.error("Cannot ban " + banned_user.username)
     
-    context = {'banned_user': banned_user}
-    return render(request, 'base/profile.html', context)
+    if request.method == 'POST':
+        rooms.delete()
+        comments.delete()
+        banned_user.delete()
+        return redirect('home')
+    
+    return render(request, 'base/ban_user.html', {'obj':banned_user})
 
 def userProfile(request, pk):
     user = User.objects.get(id=pk)
