@@ -1,4 +1,5 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block content %}
 
@@ -7,7 +8,7 @@
     {% if request.user.is_superuser and not request.user == user %}
         {% if user.is_active %}
         <button class="button-ban">
-            <a href="{% url 'ban-user' user.id %}">Ban User</a>
+            <a id="ban-user" href="{% url 'ban-user' user.id %}"><img style="width: 30px; height: auto;" src="{% static 'images\ban.png' %}" alt=""></a>
         </button>
         {% else %}
         <button class="button-ban">
