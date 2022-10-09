@@ -1,0 +1,8 @@
+<h3>Active Users</h3>
+    <hr>
+        {% for user in users %}
+            <div>
+                <small><a href="{% url 'user-profile' user.id %}">@{{user.username}}</a></small>
+                <br>
+            </div>
+        {% endfor %}
