@@ -18,9 +18,9 @@
     <div>
         <h3>{{room_count}} room(s) available</h3>
         <hr>
-        <button class="button-create" role="button">
-            <a href="{% url 'create-room' %}">Create Room</a>
-        </button>
+        <form action="{% url 'create-room' %}">
+            <input type="submit" value="Create Room" class="input-button" id="input-button-create-room">
+        </form>
         {% include 'base/feed_component.html' %}
 
     </div>

@@ -9,18 +9,18 @@
             <div>
                 <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a>
                 {% if request.user.is_superuser %}
-                    <button>
-                        <a href="{% url 'update-topic' topic.id %}">Edit Topic</a>
-                    </button>
-                    <button>
-                        <a href="{% url 'delete-topic' topic.id %}">Delete Topic</a>
-                    </button>
+                    <form class="form-topics" action="{% url 'update-topic' topic.id %}">
+                        <input type="submit" value="Edit Topic" class="input-button" id="input-button-edit-topic">
+                    </form>
+                    <form class="form-topics" action="{% url 'delete-topic' topic.id %}">
+                        <input type="submit" value="Delete Topic" class="input-button" id="input-button-delete-topic">
+                    </form>
                 {% endif %}
             </div>
         {% endfor %}
-
+        <br>
         {% if request.user.is_superuser %}
-            <button>
-                <a href="{% url 'create-topic' %}">Create topic</a>
-            </button>
+            <form class="form-topics" action="{% url 'create-topic' %}">
+                <input type="submit" value="Create Topic" class="input-button" id="input-button-create-topic">
+            </form>
         {% endif %}

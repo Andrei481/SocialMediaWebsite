@@ -4,18 +4,16 @@
 {% block content %}
 
 <h1>
-    {{user.username}}
-    {% if request.user.is_superuser and not request.user == user %}
-        {% if user.is_active %}
-        <button class="button-ban">
-            <a id="ban-user" href="{% url 'ban-user' user.id %}"><img style="width: 30px; height: auto;" src="{% static 'images\ban.png' %}" alt=""></a>
-        </button>
-        {% else %}
-        <button class="button-ban">
-            <a href="{% url 'ban-user' user.id %}">Unban User</a>
-        </button>
+    <div>
+        {{user.username}}
+        {% if request.user.is_superuser and not request.user == user %}
+            {% if user.is_active %}
+            <form action="{% url 'ban-user' user.id %}">
+                <input type="image" class="input-button" id="input-image-ban-user" src="{% static 'images\ban-user-icon.png' %}">
+            </form>
+            {% endif %}
         {% endif %}
-    {% endif %}
+        </div>
 </h1>
 
 <style>

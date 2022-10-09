@@ -11,13 +11,47 @@ body{
     height: 100vh;
 }
 
-.button-create {
-  display: flex;
-  align-items: center;
-  font-family: inherit;
-  font-weight: 500;
-  font-size: 16px;
-  padding: 0.7em 1.4em 0.7em 1.1em;
+button:hover {
+    cursor: pointer;
+}
+
+form {
+    display: inline;
+}
+
+.input-button {
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+    font-weight: 500;
+}
+
+.input-button:hover {
+    cursor: pointer;
+}
+
+form .input-button {
+    display: inline;
+}
+
+#input-button-create-room {
+    font-size: 14px;
+    padding: 0.7em 1.4em 0.7em 1.1em;
+}
+
+#input-button-edit-topic {
+    font-size: 12px;
+}
+
+#input-button-delete-topic {
+    font-size: 12px;
+}
+
+#input-image-ban-user {
+    width: 32px;
+    height: auto;
+    margin-top: 5px;
+    vertical-align: middle;
 }
 
 button > a:link{
