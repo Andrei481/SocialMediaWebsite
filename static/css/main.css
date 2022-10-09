@@ -9,6 +9,8 @@ body{
     margin: 0;
     width: 100vw;
     height: 100vh;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 button:hover {
@@ -53,6 +55,15 @@ form .input-button {
     margin-top: 5px;
     vertical-align: middle;
 }
+
+#input-image-user-profile {
+    width: 75px;
+    height: auto;
+    margin-top: 5px;
+    vertical-align: middle;
+    float: inline-end;
+}
+
 
 button > a:link{
     color: black;

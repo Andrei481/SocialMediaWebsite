@@ -13,11 +13,14 @@
                     </form>
                 </li>
 
-
                 {% if request.user.is_authenticated %}
                 <li style="float: right;">
                     Hi, {{ request.user.username }}!
                     <a  style="position: relative; top: 40px; right: 58px;" href="{% url 'logout' %}" style="float: right; padding-right: 20px;" >Logout</a>
+                </li>
+                <li style="float: right;">
+                    <form action="{% url 'user-profile' user.id %}"></form>
+                        <input type="image" id="input-image-user-profile" src="{% static 'images\user-profile.png' %}">
                 </li>
                 {% else %}
                 <li style="float: right;">
