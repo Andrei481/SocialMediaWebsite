@@ -64,6 +64,11 @@ form .input-button {
     float: inline-end;
 }
 
+#image-admin-icon {
+    width: 65px;
+    height: auto;
+    vertical-align: middle;
+}
 
 button > a:link{
     color: black;

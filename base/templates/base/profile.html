@@ -5,7 +5,11 @@
 
 <h1>
     <div>
-        {{user.username}} <small style="color: lightgreen; font-size: 13px;">Last seen: <i>{{user.last_login|timesince}} ago</i></small>
+        {{user.username}} 
+        {% if user.is_superuser %}
+            <img src="{% static 'images\admin-icon.png' %}" id="image-admin-icon">
+        {% endif %}
+        <small style="color: lightgreen; font-size: 13px;">Last seen: <i>{{user.last_login|timesince}} ago</i></small>
         {% if request.user.is_superuser and not request.user == user %}
             {% if user.is_active %}
             <form action="{% url 'ban-user' user.id %}">
