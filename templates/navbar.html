@@ -19,8 +19,9 @@
                     <a  style="position: relative; top: 40px; right: 58px;" href="{% url 'logout' %}" style="float: right; padding-right: 20px;" >Logout</a>
                 </li>
                 <li style="float: right;">
-                    <form action="{% url 'user-profile' user.id %}"></form>
-                        <input type="image" id="input-image-user-profile" src="{% static 'images\user-profile.png' %}">
+                    <form action="{% url 'user-profile' user.id %}">
+                        <input type="image" class="input-button" id="input-image-user-profile" src="{% static 'images\user-profile.png' %}">
+                    </form>
                 </li>
                 {% else %}
                 <li style="float: right;">
