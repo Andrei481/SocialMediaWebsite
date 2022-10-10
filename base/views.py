@@ -90,7 +90,8 @@ def home(request):
     rooms = Room.objects.filter(
         Q(topic__name__icontains=q) |
         Q(name__icontains=q) |
-        Q(description__icontains=q)
+        Q(description__icontains=q) |
+        Q(participants__username__icontains=q)
         ) 
     topics = Topic.objects.filter()
     room_count = rooms.count()
@@ -99,6 +100,7 @@ def home(request):
         )
     users = User.objects.filter(
         Q(username__icontains=q)
+        
     )
     
     users_count = users.count()

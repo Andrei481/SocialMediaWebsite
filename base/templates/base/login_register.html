@@ -3,22 +3,36 @@
 {% block content %}
 
 {% if page == 'login' %}
-
-<div>
-    <form method="POST" action="">
+<div id="login-form-wrap">
+    <h2 style="color: darkgoldenrod;">Login</h2>
+    <form id="login-form" method="POST" action="">
         {% csrf_token %}
+        <p>
+            <input class="input-login" id="username" name="username" type="text" value="" placeholder="Enter Username" required><i class="validation"><span></span><span></span></i>
+        </p>
 
-        <label>Username:</label>
-        <input name="username" type="text" value="" placeholder="Enter Username">
+        <p>
+            <input class="input-login" id="password" name="password" type="password" value="" placeholder="Enter Password"><i class="validation"><span></span><span></span></i>
+        </p>
 
-        <label>Password:</label>
-        <input name="password" type="password" value="" placeholder="Enter Password">
-
-        <input type="submit" value="Login" >
+        <p>
+            <input type="submit" id="login" value="Login">
+        </p>
+            
+            <!-- <label>Username:</label>
+            <input name="username" type="text" value="" placeholder="Enter Username">
+            <br><br>
+            <label>Password:</label>
+            <input name="password" type="password" value="" placeholder="Enter Password">
+            <br><br>
+            <input type="submit" value="Login" > -->
     </form>
-    <p>Don't have an account? <a href="{% url 'register' %}">Sign up!</a></p>
-</div>
 
+    <div id="create-account-wrap">
+        <p>Don't have an account? <a href="{% url 'register' %}">Sign up!</a></p>
+    </div>
+</div>
+    
 {% else %}
 
 <div>
