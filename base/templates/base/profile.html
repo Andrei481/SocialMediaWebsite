@@ -13,7 +13,7 @@
         {% if request.user.is_superuser and not request.user == user %}
             {% if user.is_active %}
             <form action="{% url 'ban-user' user.id %}">
-                <input type="image" class="input-button" id="input-image-ban-user" src="{% static 'images\ban-user-icon.png' %}">
+                <input type="image" class="input-image" id="input-image-ban-user" src="{% static 'images\ban-user-icon.png' %}">
             </form>
             {% endif %}
         {% endif %}
