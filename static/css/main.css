@@ -272,6 +272,11 @@ p label {
     display: none;
 }
 
+input[id="id_username"]::-webkit-input-placeholder::before {
+    color: black;
+    content: "Enter Username";
+}
+
 input[id="id_username"],
 input[id="id_password1"],
 input[id="id_password2"] {

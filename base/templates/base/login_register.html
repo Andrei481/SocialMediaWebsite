@@ -32,6 +32,15 @@
     <form method="POST" action="">
         {% csrf_token %}
         {{form.as_p}}
+
+        <script>
+            document.getElementById("id_username").setAttribute("placeholder", "Enter Username");
+            document.getElementById("id_password1").setAttribute("placeholder", "Enter Password");
+            document.getElementById("id_password2").setAttribute("placeholder", "Confirm Password");
+
+
+        </script>
+
         <input id="register" type="submit" value="Register" >
     </form>
     <div id="sign-in-wrap">
