@@ -227,7 +227,7 @@ input[id="login"] {
   }
 
 input[id="login"]:hover {
-    background-color: #329dd5;
+    background-color: darkorange;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
 }
@@ -245,3 +245,108 @@ input[id="login"]:hover {
 /* ===================================================================================================================== */
 /* REGISTRATION FORM */
 /* ===================================================================================================================== */
+#register-form-wrap {
+    background-color: lightgoldenrodyellow;
+    width: 35%;
+    height: 75%;
+    margin: 30px auto;
+    text-align: center;
+    padding: 20px 0 0 0;
+    border-radius: 4px;
+    box-shadow: 0px 30px 50px 0px rgba(0, 0, 0, 0.2);
+}
+
+#register-form-wrap form {
+    padding: 0 60px;
+}
+
+form ul li{
+    color: darkslategray;
+}
+
+span.helptext {
+    display: none;
+}
+
+p label {
+    display: none;
+}
+
+input[id="id_username"],
+input[id="id_password1"],
+input[id="id_password2"] {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    outline: none;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 4px;
+}
+
+input[id="id_username"],
+input[id="id_password1"],
+input[id="id_password2"] {
+    width: 90%;
+    padding: 0 0 0 10px;
+    margin: 0;
+    color: #8a8b8e;
+    border: 1px solid #c2c0ca;
+    font-style: normal;
+    font-size: 16px;
+    -webkit-appearance: none;
+        -moz-appearance: none;
+            appearance: none;
+    position: relative;
+    display: inline-block;
+    background: none;
+}
+
+input[id="id_username"]:focus,
+input[id="id_password1"]:focus,
+input[id="id_password2"]:focus {
+    border-color: #3ca9e2;
+}
+
+input[id="id_username"]:focus:invalid,
+input[id="id_password1"]:focus:invalid,
+input[id="id_password2"]:focus:invalid {
+    color: #cc1e2b;
+    border-color: #cc1e2b;
+}
+
+input[id="register"] {
+    border: none;
+    border-radius: 7px;
+    display: block;
+    background-color: darkgoldenrod;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    font-size: 18px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    margin-left: 12%;
+}
+
+input[id="register"]:hover {
+    background-color: darkorange;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+#sign-in-wrap {
+    background-color: #eeedf1;
+    font-weight: bold;
+    color: #8a8b8e;
+    font-size: 14px;
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 15px;
+    border-radius: 0 0 4px 4px;
+}
